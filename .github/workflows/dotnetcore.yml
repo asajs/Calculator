@@ -12,14 +12,24 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Checkout
     - uses: actions/checkout@v2
-    - name: Setup .NET Framework 4.7.2
-      uses: actions/setup-dotnet@v4.7.2
-      with:
-        dotnet-framework-version: 4.7.2
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+      
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+    
+    - name: Restore NuGet Packages
+      run: nuget restore Calculator.sln
+    
+    - name: Build and publish
+      run: msbuild Calculator.sln /target:Publish /p:Configuration=Release /p:PublishDir="Publish"
+
+#    - name: Install dependencies
+#      run: dotnet restore
+#    - name: Build
+#      run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
