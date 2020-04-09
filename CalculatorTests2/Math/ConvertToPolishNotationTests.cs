@@ -121,7 +121,7 @@ namespace Calculator.Math.Tests
 		public void NegativeDoublePostiveDouble_Multiplied()
 		{
 			// Arrange
-			string input = "-101.1*101.1";
+			string input = "-101.1 * 101.1";
 			List<string> actual = null;
 			List<string> expected = new List<string>() { "-101.1", "101.1", "*" };
 
@@ -139,6 +139,21 @@ namespace Calculator.Math.Tests
 			string input = "-10192387739898.1344-1383982690101.1389886";
 			List<string> actual = null;
 			List<string> expected = new List<string>() { "-10192387739898.1344", "1383982690101.1389886", "-" };
+
+			// Act
+			actual = ConvertToPolishNotation.Convert(input);
+
+			// Assert
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
+		public void PositiveIntNegativeDouble_Subtracted_Whitespace()
+		{
+			// Arrange
+			string input = "101 - -101.101";
+			List<string> actual = null;
+			List<string> expected = new List<string>() { "101", "-101.101", "+" };
 
 			// Act
 			actual = ConvertToPolishNotation.Convert(input);
