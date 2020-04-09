@@ -22,11 +22,11 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
     
     - name: Restore NuGet Packages
-      run: nuget restore Calculator.sln
+      run: nuget restore Calculator.sln
     
     - name: Build and publish
       run: msbuild Calculator.sln /target:Publish /p:Configuration=Release /p:PublishDir="Publish"
-
+    
 #    - name: Install dependencies
 #      run: dotnet restore
 #    - name: Build
