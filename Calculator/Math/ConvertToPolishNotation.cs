@@ -6,7 +6,7 @@ namespace Calculator.Math
 {
 	public static class ConvertToPolishNotation
 	{
-		private readonly static Regex _splitInput = new Regex(@"(\-?\d+\.?\d*)|([\-\+\*\\])");
+		private readonly static Regex _splitInput = new Regex(@"(?(?<=[^\-\+\*\\])(([\-\+\*\\]))|(\-?\d+\.?\d*))");
 		private static readonly Dictionary<string, int> _allowedOperators = new Dictionary<string, int>() { { "+", 7 }, { "-", 7 }, { "*", 6 }, { "/", 6 } }; 
 		public static List<string> Convert(string input)
 		{
@@ -54,6 +54,7 @@ namespace Calculator.Math
 		{
 			try
 			{
+				input = input.Replace(" ", "");
 				List<string> splitEquation = _splitInput.Split(input).Where(listItem => !string.IsNullOrWhiteSpace(listItem)).ToList();
 
 				return splitEquation;
