@@ -24,12 +24,14 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore Calculator.sln
     
-    - name: Build and publish
+    - name: Build and Publish
       run: msbuild Calculator.sln /target:Publish /p:Configuration=Release /p:PublishDir="Publish"
-    
+      
+    - name: Test
+      run: nunit-console CalculatorTests2.csproj
 #    - name: Install dependencies
 #      run: dotnet restore
 #    - name: Build
 #      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+#    - name: Test
+#      run: dotnet test --no-restore --verbosity normal
