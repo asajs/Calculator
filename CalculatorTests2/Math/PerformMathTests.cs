@@ -177,6 +177,21 @@ namespace Calculator.Math.Tests
 		}
 
 		[Test]
+		public void ThreeInts_Added_Divided()
+		{
+			// Arrange
+			string input = "101 + 101 / 101";
+			string actual = string.Empty;
+			string expected = "102";
+
+			// Act
+			actual = PerformMath.DoMath(input);
+
+			// Assert
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
 		public void InvalidEntry_TripleSubtracted()
 		{
 			// Arrange
