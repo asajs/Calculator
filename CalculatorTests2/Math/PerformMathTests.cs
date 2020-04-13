@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Calculator.Math.Tests
 {
 	[TestFixture]
-	public class ConvertToPolishNotationTests
+	public class PerformMathTests
 	{
 		[SetUp]
 		protected void SetUp()
@@ -17,11 +16,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "101+101";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101", "101", "+" };
+			string actual = string.Empty;
+			string expected = "202";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -32,11 +31,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "101-101";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101", "101", "-" };
+			string actual = string.Empty;
+			string expected = "0";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -47,11 +46,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "101.1+101.1";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101.1", "101.1", "+" };
+			string actual = string.Empty;
+			string expected = "202.2";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -62,11 +61,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "101 + 101";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101", "101", "+" };
+			string actual = string.Empty;
+			string expected = "202";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -77,11 +76,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "101.1+-101.1";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101.1", "-101.1", "+" };
+			string actual = string.Empty;
+			string expected = "0";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -91,12 +90,12 @@ namespace Calculator.Math.Tests
 		public void PositiveDoubleNegativeDouble_Subtracted()
 		{
 			// Arrange
-			string input = "101.1+-101.1";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101.1", "-101.1", "+" };
+			string input = "101.1--101.1";
+			string actual = string.Empty;
+			string expected = "202.2";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -107,11 +106,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "101+-101+101-101.1--101.1+101";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101", "-101", "+", "101", "+", "101.1", "-", "-101.1", "-", "101", "+" };
+			string actual = string.Empty;
+			string expected = "202";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -122,11 +121,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "-101.1 * 101.1";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "-101.1", "101.1", "*" };
+			string actual = string.Empty;
+			string expected = "-10221.21";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -137,11 +136,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "-10192387739898.1344-1383982690101.1389886";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "-10192387739898.1344", "1383982690101.1389886", "-" };
+			string actual = string.Empty;
+			string expected = "-11576370429999.3";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
@@ -152,11 +151,11 @@ namespace Calculator.Math.Tests
 		{
 			// Arrange
 			string input = "101 - -101.101";
-			List<string> actual = null;
-			List<string> expected = new List<string>() { "101", "-101.101", "+" };
+			string actual = string.Empty;
+			string expected = "202.101";
 
 			// Act
-			actual = ConvertToPolishNotation.Convert(input);
+			actual = PerformMath.DoMath(input);
 
 			// Assert
 			Assert.AreEqual(expected, actual);
