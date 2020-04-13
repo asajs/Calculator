@@ -160,5 +160,65 @@ namespace Calculator.Math.Tests
 			// Assert
 			Assert.AreEqual(expected, actual);
 		}
+
+		[Test]
+		public void PositiveIntPositiveInt_Divided()
+		{
+			// Arrange
+			string input = "101 / 101";
+			string actual = string.Empty;
+			string expected = "1";
+
+			// Act
+			actual = PerformMath.DoMath(input);
+
+			// Assert
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
+		public void InvalidEntry_TripleSubtracted()
+		{
+			// Arrange
+			string input = "101 - --101.101";
+			string actual = string.Empty;
+			string expected = "Err, improper format";
+
+			// Act
+			actual = PerformMath.DoMath(input);
+
+			// Assert
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
+		public void InvalidEntry_Null()
+		{
+			// Arrange
+			string input = null;
+			string actual = string.Empty;
+			string expected = "Err, no equation";
+
+			// Act
+			actual = PerformMath.DoMath(input);
+
+			// Assert
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
+		public void InvalidEntry_EmptyString()
+		{
+			// Arrange
+			string input = string.Empty;
+			string actual = string.Empty;
+			string expected = "Err, no equation";
+
+			// Act
+			actual = PerformMath.DoMath(input);
+
+			// Assert
+			Assert.AreEqual(expected, actual);
+		}
 	}
 }

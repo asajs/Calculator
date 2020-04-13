@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Text="Input" VerticalAlignment="Center" Padding="10" FontSize="24" Width="80" HorizontalAlignment="Left"/>
+		<TextBox x:Name="Input" Grid.Row="0" Text="{Binding Input}" VerticalAlignment="Center" Padding="10" FontSize="24" HorizontalAlignment="Right" BorderThickness="0"/>
+
+		<TextBlock Grid.Row="1" Text="Output" VerticalAlignment="Center" Padding="10" FontSize="16" Width="100" HorizontalAlignment="Left"/>
+		<TextBlock x:Name="Output" Grid.Row="1" Text="{Binding Output}" VerticalAlignment="Center" Padding="10" FontSize="16" HorizontalAlignment="Right"/>
+
+		<Button Grid.Row="2" Content="Compute" Click="Compute_Click"/>
+		<UniformGrid>
+			
+		</UniformGrid>
     </Grid>
 </Window>

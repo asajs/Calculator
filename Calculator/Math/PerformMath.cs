@@ -6,7 +6,7 @@ namespace Calculator.Math
 {
 	public static class PerformMath
 	{
-		private readonly static Regex _splitInput = new Regex(@"(?(?<=[^\-\+\*\\])(([\-\+\*\\]))|(\-?\d+\.?\d*))");
+		private readonly static Regex _splitInput = new Regex(@"(?(?<=[^\-\+\*/])(([\-\+\*/]))|(\-?\d+\.?\d*))");
 		private static readonly Dictionary<string, int> _allowedOperators = new Dictionary<string, int>() { { "+", 7 }, { "-", 7 }, { "*", 6 }, { "/", 6 } };
 		private const string ERROR_STRING = "Err";
 
@@ -32,10 +32,9 @@ namespace Calculator.Math
 					string leftHand = polishNotation[0];
 					string rightHand = polishNotation[1];
 					string operatree = polishNotation[2];
+					polishNotation.RemoveRange(0, 3);
 
 					string returnValue = ComputeTwoOperators(leftHand, rightHand, operatree);
-
-					polishNotation.RemoveRange(0, 3);
 
 					if(returnValue.Contains("Err"))
 					{
